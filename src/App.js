@@ -3,26 +3,34 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [started, setStarted] = useState(false)
-  const [time, setTime] = useState()
+  const [seconds, setSeconds] = useState(0)
+  const [minutes, setMinutes] = useState(0)
 
-  const startGame = () => {
-    setStarted(true)
+
+  const startTimer = () => {
+    setInterval(() => {
+      setSeconds(seconds => seconds + 1)
+    }, 1000)
+    setInterval(() => {
+      setMinutes(minutes => minutes + 1)
+      setSeconds(0)
+    }, 60000)
   }
 
-  useEffect(() => {
-    setInterval(() => {
+  const stopTimer = () => {
+    clearInterval(setSeconds(0))
+  }
 
-    }, 1000)
-  },[started])
+  const currentCount = `${minutes > 9 ? minutes : '0' + minutes}:${seconds > 9 ? seconds : '0' + seconds}`
+
 
   return (
     <div className="App">
       <header>
         Memory Game
       </header>
-      <button onClick={startGame}>New Game</button>
-      <h5>{time}</h5>
+      <button className="start-button" onClick={startTimer}>Start</button>
+      <p id="counter">{currentCount}</p>
     </div>
   );
 }
