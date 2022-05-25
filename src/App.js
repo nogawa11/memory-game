@@ -7,7 +7,6 @@ function App() {
   const [seconds, setSeconds] = useState(0)
   const [minutes, setMinutes] = useState(0)
 
-
   const startTimer = () => {
     setInterval(() => {
       setSeconds(seconds => seconds + 1)
