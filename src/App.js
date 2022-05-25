@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
+import Board from './components/Board'
 
 function App() {
   const [seconds, setSeconds] = useState(0)
@@ -31,6 +32,7 @@ function App() {
       </header>
       <button className="start-button" onClick={startTimer}>Start</button>
       <p id="counter">{currentCount}</p>
+      <Board />
     </div>
   );
 }
