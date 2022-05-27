@@ -29,8 +29,10 @@ function App() {
       <header>
         Memory Game
       </header>
-      <button className="start-button" onClick={startTimer}>Start</button>
-      <p id="counter">{currentCount}</p>
+      <div className="timer">
+        <button className="btn-start" onClick={startTimer}>New Game</button>
+        <p id="counter">{currentCount}</p>
+      </div>
       <Board />
     </div>
   );
