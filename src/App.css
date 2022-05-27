@@ -3,8 +3,13 @@
 .board {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 16px;
+  background: rgb(56,207,255);
+  background: linear-gradient(156deg, rgba(56,207,255,1) 0%, rgba(255,59,181,1) 100%);
+  padding: 32px;
+  border-radius: 16px;
 }
+
 .card {
   background-color: rgb(51, 54, 71);
   height: 100px;
@@ -14,6 +19,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+  box-shadow: 6px 6px 4px rgb(0 0 0 / 10%);
 }
 
 .card.active {
