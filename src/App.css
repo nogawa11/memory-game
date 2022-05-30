@@ -45,6 +45,7 @@ header {
   border: 0;
   border-radius: 8px;
   font-family: inherit;
+  transition: all ease 0.2s;
 }
 
 .btn-start:hover {
