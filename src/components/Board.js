@@ -13,7 +13,16 @@ import Card from './Card'
 const Board = () => {
 
   const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog]
-  const cardElements = icons.map((icon) => {
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+  }
+  const shuffledIcons = shuffleArray(icons)
+
+  const cardElements = shuffledIcons.map((icon) => {
     return (
       <Card cardIcon={icon} />
     )
