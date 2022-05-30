@@ -33,6 +33,7 @@
 
 header {
   font-size: 36px;
+  color: rgb(51, 54, 71);
 }
 
 .timer {
@@ -46,6 +47,7 @@ header {
   border-radius: 8px;
   font-family: inherit;
   transition: all ease 0.2s;
+  color: rgb(51, 54, 71);
 }
 
 .btn-start:hover {

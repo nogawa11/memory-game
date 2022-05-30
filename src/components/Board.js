@@ -11,8 +11,9 @@ import { useState } from 'react'
 import Card from './Card'
 
 const Board = () => {
+  const [cardSelection, setCardSelection] = useState();
+  const [icons, setIcons] = useState([faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog])
 
-  const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog]
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -20,11 +21,12 @@ const Board = () => {
     }
     return array
   }
+
   const shuffledIcons = shuffleArray(icons)
 
   const cardElements = shuffledIcons.map((icon) => {
     return (
-      <Card cardIcon={icon} />
+      <Card cardIcon={icon} setCardSelection={setCardSelection} cardSelection={cardSelection}/>
     )
   })
 
