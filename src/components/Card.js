@@ -14,7 +14,7 @@ const Card = ({cardIcon, setCardOne, cardOne, setCardTwo, cardTwo}) => {
   }
 
   return (
-    <div className="card" onClick={handleSelection} name={cardIcon}>
+    <div className="card" onClick={handleSelection} name={cardIcon.iconName}>
       <FontAwesomeIcon icon={cardIcon} />
     </div>
   )

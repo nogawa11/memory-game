@@ -27,16 +27,22 @@ const Board = () => {
   const [shuffledIcons, setShuffledIcons] = useState(shuffle);
 
   useEffect(() => {
-    if (cardOne === cardTwo && cardOne !== undefined) {
-      console.log('match')
-    } else if (cardOne !== cardTwo && cardOne !== undefined) {
+    if (cardOne !== undefined && cardOne.getAttribute('name') === cardTwo.getAttribute('name')) {
+      setTimeout(() => {
+        cardOne.className = "card match"
+        cardTwo.className = "card match"
+        setCardOne()
+        setCardTwo()
+      }, 1500)
+    } else if (cardOne !== undefined && cardOne.getAttribute('name') !== cardTwo.getAttribute('name')) {
       setTimeout(() => {
         cardOne.className = "card"
         cardTwo.className = "card"
         setCardOne()
         setCardTwo()
       }, 1500)
-      console.log(cardOne)
+    } else {
+      console.log('test')
     }
   }, [cardTwo])
 
