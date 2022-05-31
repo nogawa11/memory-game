@@ -52,9 +52,7 @@ function App() {
     setShuffledIcons(newCards)
     setCardOne()
     setCardTwo()
-    cardElements.forEach((card) => {
-      console.log(card)
-    })
+    // need to return all card class to 'card'
   }
 
   const cardElements = shuffledIcons.map((icon) => {
