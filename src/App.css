@@ -46,12 +46,13 @@ header {
   font-size: 36px;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
+  margin-top: 16px;
 }
 
 .btn-start {
   background-color: rgb(238, 74, 164);
   border: 0;
-  margin-top: 6px;
+  margin-top: 4px;
   border-radius: 8px;
   font-family: inherit;
   transition: all ease 0.5s;
