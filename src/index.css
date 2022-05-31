@@ -6,4 +6,11 @@ body {
   align-items: center;
   font-family: 'Indie Flower', cursive;
   color: rgb(51, 54, 71);
+  background: repeating-linear-gradient(
+  to right,
+  rgb(51, 54, 71),
+  rgb(51, 54, 71) 10px,
+  rgb(47, 50, 68) 10px,
+  rgb(47, 50, 68) 20px
+);
 }

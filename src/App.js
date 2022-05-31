@@ -1,28 +1,67 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
-import Board from './components/Board'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faClover } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faDiamond } from '@fortawesome/free-solid-svg-icons'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCat } from '@fortawesome/free-solid-svg-icons'
+import { faDog } from '@fortawesome/free-solid-svg-icons'
+import Card from './components/Card'
 
 function App() {
-  const [seconds, setSeconds] = useState(0)
-  const [minutes, setMinutes] = useState(0)
+  const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog]
+  const [cardOne, setCardOne] = useState();
+  const [cardTwo, setCardTwo] = useState();
 
-  const startTimer = () => {
-    setInterval(() => {
-      setSeconds(seconds => seconds + 1)
-    }, 1000)
-    setInterval(() => {
-      setMinutes(minutes => minutes + 1)
-      setSeconds(0)
-    }, 60000)
+  useEffect(() => {
+    if (cardOne !== undefined && cardOne.getAttribute('name') === cardTwo.getAttribute('name')) {
+      setTimeout(() => {
+        cardOne.className = "card match"
+        cardTwo.className = "card match"
+        setCardOne()
+        setCardTwo()
+      }, 1500)
+    } else if (cardOne !== undefined && cardOne.getAttribute('name') !== cardTwo.getAttribute('name')) {
+      setTimeout(() => {
+        cardOne.className = "card"
+        cardTwo.className = "card"
+        setCardOne()
+        setCardTwo()
+      }, 1500)
+    } else {
+      console.log('test')
+    }
+  }, [cardTwo])
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
   }
 
-  const stopTimer = () => {
-    clearInterval(setSeconds(0))
+  const shuffle = shuffleArray(icons)
+  const [shuffledIcons, setShuffledIcons] = useState(shuffle);
+
+  const newGame = () => {
+    const newCards = shuffleArray(icons)
+    setShuffledIcons(newCards)
+    setCardOne()
+    setCardTwo()
+    cardElements.forEach((card) => {
+      console.log(card)
+    })
   }
 
-  const currentCount = `${minutes > 9 ? minutes : '0' + minutes}:${seconds > 9 ? seconds : '0' + seconds}`
-
+  const cardElements = shuffledIcons.map((icon) => {
+    return (
+      <Card cardIcon={icon} setCardOne={setCardOne} cardOne={cardOne} cardTwo={cardTwo} setCardTwo={setCardTwo}/>
+    )
+  })
 
   return (
     <div className="App">
@@ -30,10 +69,11 @@ function App() {
         Memory Game
       </header>
       <div className="timer">
-        <button className="btn-start" onClick={startTimer}>New Game</button>
-        <p id="counter">{currentCount}</p>
+        <button className="btn-start" onClick={newGame}>New Game</button>
       </div>
-      <Board />
+      <div className="board">
+        {cardElements}
+      </div>
     </div>
   );
 }
