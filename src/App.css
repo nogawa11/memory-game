@@ -45,17 +45,19 @@
 header {
   font-size: 36px;
   color: rgb(255, 255, 255);
+  text-transform: uppercase;
 }
 
 .btn-start {
-  background-color: transparent;
+  background-color: rgb(238, 74, 164);
   border: 0;
+  margin-top: 6px;
   border-radius: 8px;
   font-family: inherit;
-  transition: all ease 0.2s;
+  transition: all ease 0.5s;
   color: rgb(255, 255, 255);
 }
 
 .btn-start:hover {
-  color: rgb(238, 74, 164);
+  background-color: rgb(107, 27, 244);
 }
