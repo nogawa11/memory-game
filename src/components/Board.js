@@ -7,11 +7,12 @@ import { faDiamond } from '@fortawesome/free-solid-svg-icons'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCat } from '@fortawesome/free-solid-svg-icons'
 import { faDog } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Card from './Card'
 
 const Board = () => {
-  const [cardSelection, setCardSelection] = useState();
+  const [cardOne, setCardOne] = useState();
+  const [cardTwo, setCardTwo] = useState();
   const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog]
 
   const shuffleArray = (array) => {
@@ -25,10 +26,23 @@ const Board = () => {
   const shuffle = shuffleArray(icons)
   const [shuffledIcons, setShuffledIcons] = useState(shuffle);
 
+  useEffect(() => {
+    if (cardOne === cardTwo && cardOne !== undefined) {
+      console.log('match')
+    } else if (cardOne !== cardTwo && cardOne !== undefined) {
+      setTimeout(() => {
+        cardOne.className = "card"
+        cardTwo.className = "card"
+        setCardOne()
+        setCardTwo()
+      }, 1500)
+      console.log(cardOne)
+    }
+  }, [cardTwo])
 
   const cardElements = shuffledIcons.map((icon) => {
     return (
-      <Card cardIcon={icon} setCardSelection={setCardSelection} cardSelection={cardSelection}/>
+      <Card cardIcon={icon} setCardOne={setCardOne} cardOne={cardOne} cardTwo={cardTwo} setCardTwo={setCardTwo}/>
     )
   })
 

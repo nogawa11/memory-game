@@ -19,7 +19,7 @@
   background-color: rgb(51, 54, 71);
   height: 100px;
   width: 100px;
-  color: white;
+  color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +29,7 @@
 
 .card.active {
   background-color: rgb(145, 82, 228);
+  color: white;
 }
 
 header {

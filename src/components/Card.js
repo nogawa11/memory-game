@@ -1,17 +1,21 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Card = ({cardIcon, setCardSelection, cardSelection}) => {
-  const [active, setActive] = useState(false)
+const Card = ({cardIcon, setCardOne, cardOne, setCardTwo, cardTwo}) => {
 
   const handleSelection = (event) => {
-    setActive(true)
-    setCardSelection(event.currentTarget)
+    if (cardOne === undefined) {
+      event.currentTarget.className = "card active"
+      setCardOne(event.currentTarget)
+    } else if (cardOne !== undefined && cardTwo === undefined ) {
+      event.currentTarget.className = "card active"
+      setCardTwo(event.currentTarget)
+    }
   }
 
   return (
-    <div className={active ? "card active" : "card"} onClick={handleSelection}>
-      {active ? <FontAwesomeIcon icon={cardIcon} />: null}
+    <div className="card" onClick={handleSelection} name={cardIcon}>
+      <FontAwesomeIcon icon={cardIcon} />
     </div>
   )
 }
