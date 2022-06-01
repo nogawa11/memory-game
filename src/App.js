@@ -26,7 +26,7 @@ function App() {
         setCardOne()
         setCardTwo()
         setNumberOfPairs(prevState => prevState + 1)
-      }, 1500)
+      }, 1000)
     } else if (cardOne !== undefined && cardOne.getAttribute('name') !== cardTwo.getAttribute('name')) {
       setTimeout(() => {
         cardOne.className = "card"
@@ -55,7 +55,10 @@ function App() {
     setShuffledIcons(newCards)
     setCardOne()
     setCardTwo()
-    // need to return all card class to 'card'
+    setNumberOfPairs(0)
+    cardElements.forEach((card) => {
+      console.log(card)
+    })
   }
 
   const cardElements = shuffledIcons.map((icon) => {
@@ -69,6 +72,9 @@ function App() {
       {numberOfPairs === 8 &&
         <Confetti
         />
+      }
+      {numberOfPairs === 8 &&
+        <div className="winner"></div>
       }
       <header>
         Memory Game

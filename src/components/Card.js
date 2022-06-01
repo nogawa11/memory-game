@@ -7,7 +7,7 @@ const Card = ({cardIcon, setCardOne, cardOne, setCardTwo, cardTwo}) => {
     if (cardOne === undefined) {
       event.currentTarget.className = "card active"
       setCardOne(event.currentTarget)
-    } else if (cardOne !== undefined && cardTwo === undefined ) {
+    } else if (cardOne !== undefined && cardTwo === undefined && cardOne !== event.currentTarget) {
       event.currentTarget.className = "card active"
       setCardTwo(event.currentTarget)
     }
