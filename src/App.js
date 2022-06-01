@@ -10,11 +10,13 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCat } from '@fortawesome/free-solid-svg-icons'
 import { faDog } from '@fortawesome/free-solid-svg-icons'
 import Card from './components/Card'
+import Confetti from 'react-confetti'
 
 function App() {
   const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog]
   const [cardOne, setCardOne] = useState();
   const [cardTwo, setCardTwo] = useState();
+  const [numberOfPairs, setNumberOfPairs] = useState(0);
 
   useEffect(() => {
     if (cardOne !== undefined && cardOne.getAttribute('name') === cardTwo.getAttribute('name')) {
@@ -23,6 +25,7 @@ function App() {
         cardTwo.className = "card match"
         setCardOne()
         setCardTwo()
+        setNumberOfPairs(prevState => prevState + 1)
       }, 1500)
     } else if (cardOne !== undefined && cardOne.getAttribute('name') !== cardTwo.getAttribute('name')) {
       setTimeout(() => {
@@ -32,7 +35,7 @@ function App() {
         setCardTwo()
       }, 1500)
     } else {
-      console.log('test')
+      console.log('not a match')
     }
   }, [cardTwo])
 
@@ -63,6 +66,10 @@ function App() {
 
   return (
     <div className="App">
+      {numberOfPairs === 8 &&
+        <Confetti
+        />
+      }
       <header>
         Memory Game
       </header>
