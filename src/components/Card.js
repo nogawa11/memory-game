@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Card = ({cardIcon, setCardOne, cardOne, setCardTwo, cardTwo}) => {
+const Card = ({cardIcon, setCardOne, cardOne, setCardTwo, cardTwo, flipCards}) => {
 
   const handleSelection = (event) => {
     if (cardOne === undefined) {
@@ -14,7 +14,7 @@ const Card = ({cardIcon, setCardOne, cardOne, setCardTwo, cardTwo}) => {
   }
 
   return (
-    <div className="card" onClick={handleSelection} name={cardIcon.iconName}>
+    <div className={flipCards ? "card" : "card"} onClick={handleSelection} name={cardIcon.iconName}>
       <FontAwesomeIcon icon={cardIcon} />
     </div>
   )

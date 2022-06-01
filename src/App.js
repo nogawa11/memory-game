@@ -52,17 +52,12 @@ function App() {
   const [shuffledIcons, setShuffledIcons] = useState(shuffle);
 
   const newGame = () => {
-    const newCards = shuffleArray(icons)
-    setShuffledIcons(newCards)
-    setCardOne()
-    setCardTwo()
-    setNumberOfPairs(0)
-    setPopUp(true)
+    window.location.reload(false);
   }
 
   const cardElements = shuffledIcons.map((icon) => {
     return (
-      <Card cardIcon={icon} setCardOne={setCardOne} cardOne={cardOne} cardTwo={cardTwo} setCardTwo={setCardTwo}/>
+      <Card cardIcon={icon} setCardOne={setCardOne} cardOne={cardOne} cardTwo={cardTwo} setCardTwo={setCardTwo} />
     )
   })
 
