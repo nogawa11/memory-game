@@ -66,7 +66,7 @@ header {
 
 .winner {
   z-index: 1;
-  color: rgb(107, 27, 244);
+  color: white;
   border: solid 2px rgb(107, 27, 244);
   display: flex;
   justify-content: center;
@@ -75,7 +75,8 @@ header {
   position: absolute;
   top: 325px;
   height: 100px;
-  background-color: rgb(231, 221, 252);
+  background: rgb(56,234,255);
+  background: linear-gradient(320deg, rgba(56,234,255,1) 0%, rgba(138,59,255,1) 100%);
   width: 250px;
   border-radius: 16px;
   animation-name: open;
