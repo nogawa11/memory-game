@@ -78,6 +78,8 @@ header {
   background-color: rgb(231, 221, 252);
   width: 250px;
   border-radius: 16px;
+  animation-name: open;
+  animation-duration: 0.6s;
 }
 
 .btn-close {
@@ -98,4 +100,13 @@ header {
 
 .btn-close:hover {
   transform: scale(1.1);
+}
+
+.winner.close {
+  display: none;
+}
+
+@keyframes open {
+  0%   {transform: scale(0);}
+  100% {transform: scale(1);}
 }

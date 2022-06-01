@@ -17,6 +17,7 @@ function App() {
   const [cardOne, setCardOne] = useState();
   const [cardTwo, setCardTwo] = useState();
   const [numberOfPairs, setNumberOfPairs] = useState(0);
+  const [popUp, setPopUp] = useState(true);
 
   useEffect(() => {
     if (cardOne !== undefined && cardOne.getAttribute('name') === cardTwo.getAttribute('name')) {
@@ -56,7 +57,7 @@ function App() {
     setCardOne()
     setCardTwo()
     setNumberOfPairs(0)
-
+    setPopUp(true)
   }
 
   const cardElements = shuffledIcons.map((icon) => {
@@ -65,15 +66,19 @@ function App() {
     )
   })
 
+  const closePopUp = () => {
+    setPopUp(false);
+  }
+
   return (
     <div className="App">
       {numberOfPairs === 8 &&
         <Confetti />
       }
       {numberOfPairs === 8 &&
-        <div className="winner">
+        <div className={ popUp ? "winner" : "winner close"}>
           Congratulations!
-          <div className="btn-close">x</div>
+          <div className="btn-close" onClick={closePopUp}>x</div>
         </div>
       }
       <header>
