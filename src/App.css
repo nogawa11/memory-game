@@ -13,6 +13,7 @@
   padding: 32px;
   border-radius: 16px;
   margin-top: 16px;
+  position: relative;
 }
 
 .card {
@@ -61,4 +62,40 @@ header {
 
 .btn-start:hover {
   background-color: rgb(107, 27, 244);
+}
+
+.winner {
+  z-index: 1;
+  color: rgb(107, 27, 244);
+  border: solid 2px rgb(107, 27, 244);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  position: absolute;
+  top: 325px;
+  height: 100px;
+  background-color: rgb(231, 221, 252);
+  width: 250px;
+  border-radius: 16px;
+}
+
+.btn-close {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  z-index: 2;
+  color: rgb(231, 221, 252);
+  background-color: rgb(107, 27, 244);
+  border-radius: 50%;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  transition: all ease 0.2s;
+}
+
+.btn-close:hover {
+  transform: scale(1.1);
 }

@@ -56,9 +56,7 @@ function App() {
     setCardOne()
     setCardTwo()
     setNumberOfPairs(0)
-    cardElements.forEach((card) => {
-      console.log(card)
-    })
+
   }
 
   const cardElements = shuffledIcons.map((icon) => {
@@ -70,11 +68,13 @@ function App() {
   return (
     <div className="App">
       {numberOfPairs === 8 &&
-        <Confetti
-        />
+        <Confetti />
       }
       {numberOfPairs === 8 &&
-        <div className="winner"></div>
+        <div className="winner">
+          Congratulations!
+          <div className="btn-close">x</div>
+        </div>
       }
       <header>
         Memory Game
