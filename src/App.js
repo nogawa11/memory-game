@@ -13,15 +13,18 @@ import Card from './components/Card'
 import Confetti from 'react-confetti'
 
 function App() {
-  const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog]
+  const icons = [faCoffee, faCoffee, faStar, faStar, faClover, faClover, faHeart, faHeart, faDiamond, faDiamond, faCircle, faCircle, faCat, faCat, faDog, faDog];
   const [cardOne, setCardOne] = useState();
   const [cardTwo, setCardTwo] = useState();
   const [numberOfPairs, setNumberOfPairs] = useState(0);
   const [popUp, setPopUp] = useState(true);
-  const [tries, setTries] = useState(0)
+  const [tries, setTries] = useState(0);
 
   useEffect(() => {
-    if (cardOne !== undefined && cardOne.getAttribute('name') === cardTwo.getAttribute('name')) {
+    if (
+      cardOne !== undefined &&
+      cardOne.getAttribute('name') === cardTwo.getAttribute('name')
+    ) {
       setTimeout(() => {
         cardOne.className = "card match"
         cardTwo.className = "card match"
@@ -30,7 +33,10 @@ function App() {
         setNumberOfPairs(prevState => prevState + 1)
         setTries(prevState => prevState + 1)
       }, 1000)
-    } else if (cardOne !== undefined && cardOne.getAttribute('name') !== cardTwo.getAttribute('name')) {
+    } else if (
+      cardOne !== undefined &&
+      cardOne.getAttribute('name') !== cardTwo.getAttribute('name')
+    ) {
       setTimeout(() => {
         cardOne.className = "card"
         cardTwo.className = "card"
@@ -54,13 +60,15 @@ function App() {
   const shuffle = shuffleArray(icons)
   const [shuffledIcons, setShuffledIcons] = useState(shuffle);
 
-  const newGame = () => {
-    window.location.reload(false);
-  }
-
   const cardElements = shuffledIcons.map((icon) => {
     return (
-      <Card cardIcon={icon} setCardOne={setCardOne} cardOne={cardOne} cardTwo={cardTwo} setCardTwo={setCardTwo} />
+      <Card
+        cardIcon={icon}
+        setCardOne={setCardOne}
+        cardOne={cardOne}
+        cardTwo={cardTwo}
+        setCardTwo={setCardTwo}
+      />
     )
   })
 
@@ -69,18 +77,23 @@ function App() {
   }
 
   if (numberOfPairs === 8) {
-    if (localStorage.getItem('record') && localStorage.getItem('record') > tries) {
+    if (
+      localStorage.getItem('record') &&
+      localStorage.getItem('record') > tries
+    ) {
       localStorage.setItem('record', tries);
     }
   }
 
+  const newGame = () => {
+    window.location.reload(false);
+  }
+
   return (
     <div className="App">
+      {numberOfPairs === 8 && <Confetti />}
       {numberOfPairs === 8 &&
-        <Confetti />
-      }
-      {numberOfPairs === 8 &&
-        <div className={ popUp ? "winner" : "winner close"}>
+        <div className={ popUp ? "winner" : "winner close" }>
           Congratulations!
           <div className="btn-close" onClick={closePopUp}>x</div>
         </div>
@@ -91,7 +104,9 @@ function App() {
       <div className="record">
         <button className="btn-start" onClick={newGame}>New Game</button>
         <h5>Current Attempts: {tries}</h5>
-        <h5>Best Record: {localStorage.getItem('record') ? localStorage.getItem('record') : 0}</h5>
+        <h5>Best Record: {localStorage.getItem('record') ?
+          localStorage.getItem('record') : 0}
+        </h5>
       </div>
       <div className="board">
         {cardElements}
