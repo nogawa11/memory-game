@@ -91,7 +91,7 @@ function App() {
       <div className="record">
         <button className="btn-start" onClick={newGame}>New Game</button>
         <h5>Current Attempts: {tries}</h5>
-        <h5>Best Attempt: {localStorage.getItem('record') ? localStorage.getItem('record') : 0}</h5>
+        <h5>Best Record: {localStorage.getItem('record') ? localStorage.getItem('record') : 0}</h5>
       </div>
       <div className="board">
         {cardElements}
