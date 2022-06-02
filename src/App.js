@@ -68,6 +68,12 @@ function App() {
     setPopUp(false);
   }
 
+  if (numberOfPairs === 8) {
+    if (localStorage.getItem('record') && localStorage.getItem('record') > tries) {
+      localStorage.setItem('record', tries);
+    }
+  }
+
   return (
     <div className="App">
       {numberOfPairs === 8 &&
@@ -84,7 +90,8 @@ function App() {
       </header>
       <div className="record">
         <button className="btn-start" onClick={newGame}>New Game</button>
-        <h5>Attempts: {tries}</h5>
+        <h5>Current Attempts: {tries}</h5>
+        <h5>Best Attempt: {localStorage.getItem('record') ? localStorage.getItem('record') : 0}</h5>
       </div>
       <div className="board">
         {cardElements}
