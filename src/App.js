@@ -18,6 +18,7 @@ function App() {
   const [cardTwo, setCardTwo] = useState();
   const [numberOfPairs, setNumberOfPairs] = useState(0);
   const [popUp, setPopUp] = useState(true);
+  const [tries, setTries] = useState(0)
 
   useEffect(() => {
     if (cardOne !== undefined && cardOne.getAttribute('name') === cardTwo.getAttribute('name')) {
@@ -27,6 +28,7 @@ function App() {
         setCardOne()
         setCardTwo()
         setNumberOfPairs(prevState => prevState + 1)
+        setTries(prevState => prevState + 1)
       }, 1000)
     } else if (cardOne !== undefined && cardOne.getAttribute('name') !== cardTwo.getAttribute('name')) {
       setTimeout(() => {
@@ -34,6 +36,7 @@ function App() {
         cardTwo.className = "card"
         setCardOne()
         setCardTwo()
+        setTries(prevState => prevState + 1)
       }, 1500)
     } else {
       console.log('not a match')
@@ -79,8 +82,9 @@ function App() {
       <header>
         Memory Game
       </header>
-      <div className="timer">
+      <div className="record">
         <button className="btn-start" onClick={newGame}>New Game</button>
+        <h5>Attempts: {tries}</h5>
       </div>
       <div className="board">
         {cardElements}

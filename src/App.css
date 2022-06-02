@@ -29,6 +29,18 @@
   transition: all ease 0.3s;
 }
 
+h5 {
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.record {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
 .card:hover {
   transform: scale(1.05);
 }
